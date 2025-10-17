@@ -1,0 +1,7 @@
+scenario,latency_p50_ms,latency_p95_ms,latency_p99_ms,throughput_ops_s,drop_rate
+baseline_pi_1000,0.06,0.125,0.305,452,0.0
+affinity_pi_1000,0.043,0.13,0.803,450,0.0
+queue_cap_8_pi_1000,0.062,0.137,0.303,427,0.0
+baseline_pi_0,0.002,0.034,0.685,350332,0.649
+affinity_pi_0,0.002,0.031,0.451,315361,0.719
+queue_cap_8_pi_0,0.001,0.003,0.024,363883,0.661
