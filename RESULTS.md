@@ -74,12 +74,12 @@ It turns out this change significantly improved the performance of the affinity 
 ![Drop_Rate](result_data/t001_drop_rate.png)
 
 ## Takeaways
--usleep(1000) scenario: task-clock 0.44s / 10s (4.4% CPU), context switches ≈ 21K/sec → ops/s stuck at ≈ 450. The primary cause is wakeup latency / scheduling delays.
--prod-interval=0 scenario: task-clock 18.8s / 10s (≈1.88 CPUs), context switches ≈ 1K/sec → ops/s is dominated by per-item overhead (locking, allocation, timestamping).
--A little drops occurred. To force drops: increase --work-bytes or reduce the queue capacity.
--Under high load (pi_0), the large queue (q=64) causes "queue bloat," resulting in high latency and poor CPU cache efficiency.
--The small queue (q=8) forces a "fail-fast" strategy by dropping data, ensuring the consumer always processes fresh items and achieving minimal latency.
--This demonstrates that the system prioritizes low latency over guaranteed delivery, making q=8 the superior configuration.
+- usleep(1000) scenario: task-clock 0.44s / 10s (4.4% CPU), context switches ≈ 21K/sec → ops/s stuck at ≈ 450. The primary cause is wakeup latency / scheduling delays.
+- prod-interval=0 scenario: task-clock 18.8s / 10s (≈1.88 CPUs), context switches ≈ 1K/sec → ops/s is dominated by per-item overhead (locking, allocation, timestamping).
+- A little drops occurred. To force drops: increase --work-bytes or reduce the queue capacity.
+- Under high load (pi_0), the large queue (q=64) causes "queue bloat," resulting in high latency and poor CPU cache efficiency.
+- The small queue (q=8) forces a "fail-fast" strategy by dropping data, ensuring the consumer always processes fresh items and achieving minimal latency.
+- This demonstrates that the system prioritizes low latency over guaranteed delivery, making q=8 the superior configuration.
 
 ## Next Steps
 - increase --work-bytes to simulate a slower consumer or with some different affinity settings.
