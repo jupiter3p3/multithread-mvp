@@ -10,4 +10,4 @@ $(BIN): $(SRC)
 	$(CC) $(CFLAGS) $(SRC) -o $(BIN)
 
 clean:
-	rm -rf $(BIN_DIR) metrics/*.csv plots/*.png latencies_ns.txt stats_*.txt
+	rm -rf $(BIN_DIR) metrics/*.csv plots/*.png latencies_ns_*.txt stats_*.txt
