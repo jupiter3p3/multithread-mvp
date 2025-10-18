@@ -1,8 +1,13 @@
 # MVP v1.0 — Results (Multithreaded SPSC on QEMU)
+**Executive Summary**
+- With pacing (1 ms): ~450 ops/s, 0 drops; bottleneck is scheduler/wakeup jitter (can be mitigated with TIMER_ABSTIME + thread pinning).
+- Unpaced overload: queue=64 → p99 ≈ 0.685 ms; changing to queue=8 → **p99 ≈ 0.024 ms (~28× reduction)**, throughput +~4%, at the cost of drop ≈ 0.66–0.72.
+- Reproducible: `./scripts/run.sh` produces `metrics.csv` and plots (details below).
 
-**Goal**: Demonstrate a reproducible threading pipeline with measurable KPIs.  
-**Scenarios**: `baseline`, `affinity` (pin consumer), `queue-cap-8`  
-**Metrics**: `latency p50/p95/p99`, `throughput ops/s`, `drop rate`.
+[→ Back to README (Goal / Scenarios / Build / Run)](./README.md)
+
+![Latency by scenario](result_data/t001_latency.png)
+
 
 ## t000 set pi 1000
 | scenario     | p50 (ms) | p95 (ms) | p99 (ms) | ops/s |  drop  |

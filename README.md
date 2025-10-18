@@ -1,12 +1,12 @@
-Goal：Demonstrate multithreaded pipeline & measurement method (userspace/QEMU)
+Goal: Demonstrate a multithreaded pipeline and a measurement method (userspace/QEMU)
 
-Scenarios：baseline / affinity / queue-cap-8
+Scenarios: baseline / affinity / queue-cap-8
 
 Build：make
 
-Run：scripts/run.sh → outputs metrics/metrics.csv, plots/*.png
+Run: scripts/run.sh → outputs metrics/*.csv, plots/*.png
 
-Notes：QEMU VM、userspace C/pthreads
+Notes: QEMU VM, userspace C/pthreads
 
 See **[RESULTS.md](RESULTS.md)** for the summary table and plots.
 
